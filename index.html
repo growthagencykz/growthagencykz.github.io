@@ -157,6 +157,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .track figure{margin:0;width:112px;height:60px;display:grid;place-items:center;flex:none}
 .track img{max-height:52px;max-width:104px;width:auto;height:auto;object-fit:contain;filter:grayscale(1);opacity:.55;mix-blend-mode:multiply;transition:filter var(--hover) ease,opacity var(--hover) ease}
 @media (hover:hover) and (pointer:fine){.track figure:hover img{filter:none;opacity:1}}
+.track .wm{font-weight:800;font-size:20px;letter-spacing:.2em;color:var(--ink);opacity:.42;transition:opacity var(--hover) ease}
+@media (hover:hover) and (pointer:fine){.track figure:hover .wm{opacity:1}}
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* sections */
@@ -838,9 +840,9 @@ var MOTION = {
   /* ---------- links, logos ---------- */
   var msg = encodeURIComponent("Здравствуйте! Пишу с сайта grwth agency, хочу обсудить маркетинг для своего бизнеса");
   $$(".wa").forEach(function(a){ a.href = "https://wa.me/77066151671?text=" + msg; });
-  var logos = ["hikvision","claus-marsh","jm-capital","potok","atakent-expo","geona","rams","global-coffee","altyncup","alpha-project","marimo","maison","topplay","chai-spa","samga","apec","fssa"];
+  var logos = ["hikvision","volkswagen","geely","haval","chery","exeed","txt:TANK","claus-marsh","jm-capital","potok","atakent-expo","geona","rams","global-coffee","altyncup","alpha-project","marimo","maison","topplay","chai-spa","samga","apec","fssa"];
   var out = "";
-  for (var k = 0; k < 2; k++) logos.forEach(function(n){ out += '<figure' + (k ? ' aria-hidden="true"' : '') + '><img src="img/' + n + '.webp" alt="' + (k ? "" : n.replace(/-/g, " ")) + '" loading="lazy" decoding="async"></figure>'; });
+  for (var k = 0; k < 2; k++) logos.forEach(function(n){ out += '<figure' + (k ? ' aria-hidden="true"' : '') + '>' + (n.indexOf("txt:") === 0 ? '<span class="wm">' + n.slice(4) + '</span>' : '<img src="img/' + n + '.webp" alt="' + (k ? "" : n.replace(/-/g, " ")) + '" loading="lazy" decoding="async">') + '</figure>'; });
   $("#track").innerHTML = out;
 
   /* ---------- hero: focus reveal ---------- */
